@@ -1,0 +1,380 @@
+{% load static %}
+
+<style>
+  /* Event Categories Section */
+#event-categories {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+}
+#event-categories .event-categories-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event-category {
+    display: flex;
+    width: 40%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s, background-color 0.2s;
+    padding: 30px;
+}
+.event-category:nth-child(odd) {
+    align-self: flex-start;
+    margin-left: 15%;
+    margin-right: auto;
+}
+.event-category:nth-child(even) {
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: 15%;
+    flex-direction: row-reverse;
+}
+.event-category:hover {
+    background-color: #e0f7fa;
+}
+.event-category .content-new {
+    flex: 1;
+    padding: 10px;
+}
+.event-category .image {
+    flex: 0 0 100px;
+    max-width: 100px;
+}
+.event-category .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.event-category h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+.event-category p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    #event-categories .event-categories-container {
+        align-items: center;
+    }
+    .event-category {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        flex-direction: column;
+    }
+    .event-category:nth-child(even) {
+        flex-direction: column;
+    }
+    .event-category .image {
+        max-width: 100%;
+    }
+}
+
+
+
+#testimonials {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #000000, #434343);
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#testimonials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, rgba(0, 0, 0, 0) 70%);
+  opacity: 0.2;
+  z-index: 1;
+  animation: radialGradientAnimation 15s ease infinite;
+}
+
+@keyframes radialGradientAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.testimonial-slider {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  overflow: hidden;
+  background: none;
+  width: 100%;
+  color: #fff;
+  height: 300px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.testimonial-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(67, 67, 67, 0.6));
+  z-index: 1;
+  opacity: 0.8;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.testimonial-slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-slide.active {
+  display: block;
+  opacity: 1;
+  height: 100%;
+}
+
+.quote-icon {
+  font-size: 50px;
+  color: #ff7f50;
+  opacity: 0.8;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.author {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1em;
+  color: #ff7f50;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Decorative Emojis */
+#testimonials::after {
+  content: "✨";
+  font-size: 50px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  animation: emojiAnimation 5s linear infinite;
+}
+
+#testimonials::before {
+  content: "🌟";
+  font-size: 50px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  animation: emojiAnimation 5s linear infinite reverse;
+}
+
+@keyframes emojiAnimation {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(360deg); }
+}
+
+/* Optional Overlay Pattern */
+.testimonial-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('static/images/testimonial1.jpeg') repeat;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+
+
+.clients {
+    text-align: left;
+    padding: 50px 20px;
+    margin-bottom:0px;
+}
+
+.clients h2 {
+    font-size: 1.2em;
+    font-weight:bold;
+    color:brown;
+    margin-bottom: 20px;
+}
+
+.client-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.client-logos img {
+    height: 80px;
+
+    transition: filter 0.3s ease;
+    filter: grayscale(0%);
+}
+
+
+
+
+</style>
+
+<section id="testimonials">
+    <div class="testimonial-slider">
+    <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Our company’s annual office party was a huge success, thanks to Aura Events. They managed to create an atmosphere that was both fun and professional, perfectly balancing the needs of our diverse team."</p>
+      <p class="author">Mark.T<br>TechNova Inc.</p>
+    </div>
+  
+     <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Aura Events is our go-to for all our event needs. Their professionalism, creativity, and dedication consistently shine through, making every occasion memorable and hassle-free. We couldn’t ask for a better partner!"</p>
+      <p class="author">Amanda S<br>Stellar Events</p>
+    </div>
+    <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Aura Events exceeded our expectations in organizing our family reunion. Their attention to detail, warm hospitality, and seamless coordination allowed us to focus on what mattered most—spending quality time together!"</p>
+      <p class="author">Karen L<br>Family Coordinator</p>
+    </div>
+    <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Hosting our musical show with Aura Events was a fantastic experience. The team’s expertise in event management ensured everything ran smoothly, and the audience had an amazing time."</p>
+      <p class="author">David B.<br>Harmony Productions</p>
+    </div>
+
+    <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Aura Events is our go-to for any event we host. Their professionalism and dedication to excellence shine through in every aspect of their work. They truly make every event memorable and stress-free."</p>
+      <p class="author">Michelle R<br>Crafts Events</p>
+    </div>
+
+   <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Aura Events made my son's birthday party an unforgettable experience. The team was incredibly professional and handled everything seamlessly, allowing us to enjoy the day without any worries. Highly recommended!".</p>
+      <p class="author">Emily R.<br>Proud Mother</p>
+    </div>
+
+   <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Our wedding was a dream come true, thanks to the exceptional service and attention to detail provided by Aura Events. Every aspect, from the decorations to the catering, was flawless. We couldn't have asked for a more perfect day!"</p>
+      <p class="author">Sarah and John<br> Happy Couple</p>
+    </div>
+    <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Our annual gala was a resounding success thanks to Aura Events! They managed every aspect flawlessly, from the elegant decor to the engaging entertainment. Our guests are still talking about it!"</p>
+      <p class="author"> Mark S.<br> Gala Innovations</p>
+    </div>
+      <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"Aura Events exceptional service made our engagement party an extraordinary event. Their attention to detail and commitment to creating a memorable experience were evident in every aspect. Our guests were impressed, and we couldn’t be happier."</p>
+      <p class="author">Rachel T. & David L<br> Cherished Moments</p>
+    </div>
+       <div class="testimonial-slide">
+      <div class="quote-icon">“</div>
+      <p>"During a difficult time, Aura Events provided compassionate and professional support in organizing a funeral service for our loved one. Their attention to detail and sensitivity helped us honor their memory with dignity and grace. We are grateful for their assistance."</p>
+      <p class="author"> Linda M.<br>Serenity Services</p>
+    </div>
+
+
+
+    <!-- Add more slides as needed -->
+  </div>
+</section>
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+  var slides = document.querySelectorAll('.testimonial-slide');
+  var currentIndex = 0;
+
+  function showSlide(index) {
+    slides.forEach(function (slide, i) {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+  showSlide(currentIndex); // Show the first slide initially
+});
+
+</script>
+
+<section class="clients">
+        <h2>OUR CLIENTS INCLUDE</h2>
+    <hr>
+    <br>
+        <div class="client-logos">
+            <img src="{% static 'images/logo1.png' %}" alt="TechNova">
+            <img src="{% static 'images/LuxeLane.png' %}"alt="InnoWave">
+            <img src="{% static 'images/logo2.png' %}" alt="GreenLeaf">
+            <img src="{% static 'images/premium.png' %}" alt="AquaSphere">
+            <img src="{% static 'images/infinity.png' %}" alt="SolarFlare">
+            <img src="{% static 'images/Majesty Zephyr.png' %}" alt="UrbanTech">
+            <img src="{% static 'images/logo3.png' %}" alt="SkyHigh Innovations">
+            <img src="{% static 'images/logo4.png' %}" alt="EcoSolutions">
+            <img src="{% static 'images/GoldenDawn.png' %}" alt="NextGen Dynamics">
+        </div>
+    </section>
+
+
+<!--<section id="event-categories">-->
+<!--    <div class="container">-->
+<!--        <div class="heading4">Our Event Managements</div>-->
+<!--    </div>-->
+<!--    <div class="event-categories-container">-->
+<!--        <div class="event-category">-->
+<!--            <div class="image">-->
+<!--                <img src="{% static 'images/event5.jpeg' %}" alt="Wedding">-->
+<!--            </div>-->
+<!--            <div class="content-new">-->
+<!--                <h3>Wedding</h3>-->
+<!--                <p>Knot twin is a moment thing; Soul twin is a life thing. We are dedicated to making the moment you've been waiting for complete.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="event-category">-->
+<!--            <div class="image">-->
+<!--                <img src="{% static 'images/event7.jpeg' %}" alt="Birthday">-->
+<!--            </div>-->
+<!--            <div class="content-new">-->
+<!--                <h3>Birthday</h3>-->
+<!--                <p>A personalized experience is created for fabulous moments by Infodazz. We manage your time, and the day of yours is unforgettable.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</section>-->
+
+

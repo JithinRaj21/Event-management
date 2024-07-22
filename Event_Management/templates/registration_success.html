@@ -1,0 +1,84 @@
+{% load static %}
+{% block content %}
+
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafc;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .registration-successful {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .registration-successful h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .registration-successful p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .registration-successful h2 {
+            margin-top: 20px;
+            color: #555;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .registration-successful .ticket-details p {
+            background-color: #f0f0f0;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .registration-successful a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .registration-successful a:hover {
+            color: #0056b3;
+        }
+    </style>
+
+    <div class="registration-successful">
+        <h1>Registration Successful !</h1>
+        <p>You have successfully registered for {{ event.title }}.</p>
+        <p>Event Date: {{ event.start_time }}</p>
+
+        {% if event.ticketed %}
+            <h2>Your Ticket Details</h2>
+            <div class="ticket-details">
+                <p>Name: {{ attendee.user }}</p>
+                <p>Event: {{ attendee.event }}</p>
+                <p>Price: Rs. {{ attendee.ticket.price }}</p>
+            </div>
+        {% endif %}
+
+        <a href="{% url 'home'  %}">Back to Home</a>
+    </div>
+
+
+{% endblock %}

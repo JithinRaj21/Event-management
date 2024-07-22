@@ -1,0 +1,209 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+
+
+.contact {
+    width: 100%;
+    background: url("{% static 'images/contactimg.jpg' %}") no-repeat center center/cover;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.contact .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.heading6 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.contact p {
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-form p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.contact-form p label {
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    color: white;
+}
+
+.contact-form p input,
+.contact-form p textarea {
+    width: 90%;
+    max-width: 500px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+#contact-btn {
+    width: 200px;
+    height: 40px;
+    border: none;
+    background: green;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border-radius: 5px;
+}
+
+#contact-btn:hover {
+    background: #8a5631;
+}
+
+#col {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact h1 {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.contact #col p {
+    font-size: 15px;
+    color: white;
+    margin: 5px 0;
+}
+
+.contact #col a {
+
+    color: white;
+
+}
+
+.contact-text h1{
+
+   text-align:center;
+   font-weight:normal;
+}
+
+.contact-text p{
+
+   text-align:center;
+   font-weight:normal;
+}
+
+@media screen and (max-width: 766px) {
+    .contact .container {
+        padding: 20px;
+    }
+
+    #col {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .contact {
+        padding: 40px 0;
+    }
+
+    .contact-form p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
+
+    .contact-form p label {
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contact-form p input,
+    .contact-form p textarea {
+        width: 100%;
+    }
+
+    #contact-btn {
+        width: 100px;
+    }
+}
+
+</style>
+
+
+<div class="contact-text">
+  <h1>24/7</h1>
+  <h1>Get in touch with us!</h1>
+  <p> We are committed to and passionate about providing you with an amazing experience from planning to execution.<br> Our team of experts will ensure that your vision becomes a reality. For more information or to inquire about receiving a quote for your event, please use the form below.
+</div>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="heading6">Contact <span>Us</span></div>
+    <p style="font-weight:normal;">LET'S GET IN TOUCH</p>
+    <p>We'd love to hear from you! Please fill out the form below or use the provided details to reach us.</p>
+    <div class="row">
+      <div class="col-md-7">
+        <form method="POST" class="contact-form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="button-container">
+            <button id="contact-btn" type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-5" id="col">
+        <h1>Info</h1>
+        <p><i class="fa-regular fa-envelope"></i><a href="mailto:eventmanagement@gmail.com" style="text-decoration:none;"> eventmanagement@gmail.com</a></p>
+        <p><i class="fa-solid fa-phone"></i><a href="tel:+91 94000 00000" style="text-decoration:none;"> +91 94000 00000</a></p>
+        <p><i class="fa-solid fa-building-columns"></i><a href="https://maps.google.com/maps?q=Ernakulam + Kerala" style="text-decoration:none;"> Ernakulam, Kerala</a></p>
+        <p>Reach out to us via email for any inquiries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+

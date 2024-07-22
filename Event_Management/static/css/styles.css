@@ -1,0 +1,419 @@
+body {
+  background-color: #333;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#home, #about, #events, #service {
+  width: 100%;
+  background-color: #f7f5f2;
+  padding: 20px 0;
+}
+
+
+   /* navbar */
+
+
+#navbar{
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.5s ease;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+
+}
+
+#logo{
+  display:flex;
+  align-items:center;
+}
+#logo img{
+  border-radius: 10px;
+  width: 100px;
+
+  margin-left: 50px;
+}
+.navbar-nav{
+  margin-left: 50px;
+}
+.nav-item .nav-link{
+  color: black;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.nav-item .nav-link:hover{
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  color: red;
+}
+#navbar form button{
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+/* Media queries for responsive adjustments */
+@media (max-width: 768px) {
+  #navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .nav-item .nav-link {
+    color: black;
+  }
+}
+/* navbar */
+
+/* home content */
+
+.content{
+  padding-top: 210px;
+  margin-left: 56px;
+}
+
+.content h3{
+  font-size: 50px;
+  color: white;
+}
+.content p{
+  margin-top: 10px;
+  color: white;
+}
+
+#btn{
+  width: 150px;
+  height: 36px;
+  margin-top: 20px;
+  background: blue;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#btn:hover{
+  background: orange;
+  color: white;
+}
+/* home content */
+
+/* footer */
+#footer{
+  width: 100%;
+  background: #2C2C2C;
+  margin-top: 50px;
+}
+.footer-logo img{
+  width: 180px;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+}
+#footer .social-links i{
+  font-size: 17px;
+  margin-left: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.credite{
+  color: white;
+  margin-top: 20px;
+}
+.credite{
+  text-shadow: 0px 0px 1px black;
+}
+.credite a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.credite a span{
+  color: black;
+}
+.copyright span{
+  color: black;
+}
+/* footer */
+html{
+  scroll-behavior: smooth;
+}
+.arrow{
+  position: fixed;
+  border-radius: 50px;
+  height: 50px;
+  bottom: 40px;
+  right: 50px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+}
+
+
+/* Events */
+.events {
+  width: 100%;
+
+  background: #f7f5f2;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.heading4{
+  text-align: center;
+  color:black;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 70px;
+  border-bottom: 2px solid black;
+}
+
+#container3{
+  margin-top: 30px;
+}
+.events h3{
+  text-align: center;
+  color: black;
+  font-weight:light;
+  font-size: 20px;
+}
+
+
+.card {
+   margin: 16px;
+  }
+
+.card img {
+      width: 100%;
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+
+}
+.events{
+   margin-bottom:0;
+ }
+/* events */
+
+/* about */
+#about{
+  width: 100%;
+  height: 90vh;
+  background: #f7f5f2;
+  font-family: 'Roboto', sans-serif;
+}
+#about .container{
+  padding-top: 90px;
+
+}
+.heading{
+
+  text-align: center;
+  margin-bottom: 50px;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+}
+.heading span{
+  color: blue;
+}
+#about .card{
+  border-radius: 10px;
+
+}
+
+#about .card img{
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.card {
+    perspective: 1000px; /* Creates the 3D space */
+    position: relative;
+}
+
+#event-image {
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+#event-image:hover {
+    transform: rotateY(180deg);
+}
+
+#event-image .card-back {
+    transform: rotateY(180deg);
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+}
+
+.about p{
+  padding-top:20px;
+  font-size:15px;
+  padding-bottom:20px;
+}
+
+.about h3{
+  padding-top:10px;
+
+}
+
+#about-btn{
+  width: 200px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid blue;
+  color: blue;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+
+}
+
+#about-btn:hover{
+  background: #b2744c;
+  color: white;
+}
+@media screen and (max-width:982px){
+  #about p{
+    font-size: 8px;
+  }
+}
+@media screen and (max-width:766px){
+  #about p{
+    font-size: 15px;
+  }
+  #about{
+    height: 120vh;
+  }
+}
+/* about */
+
+
+
+
+/* event detail */
+
+.event-detail {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+}
+
+.event-detail h1 {
+    font-size: 36px;
+    font-weight: light;
+    color: #333;
+}
+
+.event-detail p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.event-detail strong {
+    color: #333;
+}
+
+.event-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-detail .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.event-detail .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.event-detail ul {
+    margin-top: 10px;
+}
+
+.event-detail ul li {
+    font-size: 16px;
+    color: #666;
+}
+
+.event-detail h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+
+
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.custom-card:hover {
+    transform: scale(1.05);
+}
+
+.card-img {
+    width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.card-btn {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-btn:hover {
+    background-color: #0056b3;
+}

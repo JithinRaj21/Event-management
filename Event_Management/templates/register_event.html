@@ -1,0 +1,149 @@
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+
+<!--    <div class="event-registration">-->
+<!--        <h1 style="color: #333; text-align: center;">Register for {{ event.title }}</h1>-->
+
+<!--        {% if event.ticketed %}-->
+<!--            <form method="post" class="registration-form">-->
+<!--                {% csrf_token %}-->
+<!--                <label for="ticket_id">Select a ticket:</label>-->
+<!--                <select name="ticket_id" id="ticket_id" required>-->
+<!--                    {% for ticket in tickets %}-->
+
+<!--                        <option value="{{ ticket.id }}">  Rs.{{ ticket.price }}</option>-->
+
+<!--                    {% endfor %}-->
+
+<!--                </select>-->
+<!--                <p class="mt-3">Please specify the quantity for your selected ticket:</p>-->
+
+<!--            <div class="quantity-selection mt-2">-->
+<!--                {% for ticket in tickets %}-->
+<!--                    <div class="ticket-quantity">-->
+<!--                        <label for="quantity_{{ ticket.id }}">Quantity for Rs.{{ ticket.price }} ticket:</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <div class="input-group-prepend">-->
+<!--                                <span class="input-group-text">Quantity</span>-->
+<!--                            </div>-->
+
+<!--                            <br>-->
+
+<!--                            <input type="number" class="form-control" name="quantity_{{ ticket.id }}" id="quantity_{{ ticket.id }}" min="1" max="{{ ticket.quantity }}" value="1">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+<!--            </div>-->
+<!--                <br>-->
+<!--                <button type="submit" class="register-button">Pay Amount</button>-->
+<!--            </form>-->
+<!--        {% else %}-->
+<!--            <p class="no-ticket">This event does not require a ticket. You will be registered automatically.</p>-->
+<!--            <a href="{% url 'event_detail' event_id=event.id %}" class="back-link">Back to event details</a>-->
+<!--        {% endif %}-->
+
+
+<!--    </div>-->
+
+
+
+    <style>
+
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-event {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .register-event h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .register-event form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .register-event label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .register-event select,
+        .register-event input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .register-event button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-event button:hover {
+            background-color: #0056b3;
+        }
+
+        .register-event p {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+
+    <div class="register-event">
+        <h1>Register for {{ event.title }}</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <form method="post" action="{% url 'register_event' event.id %}">
+            {% csrf_token %}
+            <label for="ticket_id">Select Ticket:</label>
+            <select name="ticket_id" id="ticket_id" required>
+                {% for ticket in tickets %}
+                    <option value="{{ ticket.id }}">  Rs. {{ ticket.price }} ({{ ticket.quantity }} available)</option>
+                {% endfor %}
+            </select>
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+
+
+
+
+{% endblock %}

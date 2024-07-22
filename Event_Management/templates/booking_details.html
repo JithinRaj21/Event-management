@@ -1,0 +1,113 @@
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:#FFC1CC;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    nav {
+        background-color: #0044cc;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    nav img {
+        height: 40px;
+        margin-right: 1rem;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+    nav ul li {
+        margin-right: 2rem;
+    }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+        margin-bottom: 2rem;
+    }
+    h3 {
+        border-bottom: 2px solid #0044cc;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        color: #0044cc;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 1rem;
+        text-align: left;
+    }
+    th {
+        background-color: #f4f4f9;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+</style>
+
+<nav>
+    <img src="{% static 'images/eventlogo2.jpeg' %}" alt="Logo">
+    <ul>
+        <li><a href="{% url 'organizer_dashboard' %}">Home</a></li>
+        <li><a href="{% url 'create_event' %}">Create Event</a></li>
+        <li><a href="{% url 'booking_details' %}">Service Bookings</a></li> <!-- New menu item for booking details -->
+    </ul>
+</nav>
+<div class="container">
+    <div class="section">
+        <h3>Booked Services</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Booking Date</th>
+                    <th>Customer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in booked_services %}
+                    {% if service.attendee_set.all %}
+                        <tr>
+                            <td>{{ service.title }}</td>
+                            <td>{{ service.start_time }}</td>
+                            <td>
+                                <ul>
+                                    {% for attendee in service.attendee_set.all %}
+                                        <li>{{ attendee.user.username }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

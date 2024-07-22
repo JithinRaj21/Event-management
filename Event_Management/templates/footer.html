@@ -1,0 +1,112 @@
+{% load static %}
+
+<style>
+.footer{
+    background: black;
+    color: #8a8a8a;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+.footer p{
+    color: #8a8a8a;
+}
+.footer h3{
+    color: #fff;
+    margin-bottom: 20px;
+}
+.footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4{
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis: 30%;
+}
+.footer-col-2{
+    flex: 1;
+    text-align: center;
+}
+.footer-col-2 img{
+    width: 140px;
+    margin-bottom: 20px;
+}
+.footer-col-3, .footer-col-4{
+    flex-basis: 12%;
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+
+}
+
+.footer-col-4 ul li a {
+            text-decoration: none;
+        }
+.app-logo{
+    margin-top: 20px;
+}
+.app-logo img{
+    width: 140px;
+}
+.footer hr{
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+}
+.copyright{
+    text-align: center;
+}
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+</style>
+
+
+<!-- footer -->
+<div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download Our App</h3>
+                    <p>Download App for Android and ios mobile phone.</p>
+                    <div class="app-logo">
+                        <a href="https://play.google.com/"><img src="{% static 'images/play-store.png' %}"></a>
+                        <a href="https://www.apple.com/app-store/"><img src="{% static 'images/app-store.png' %}"></a>
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="{% static 'images/new_logo2.png' %}">
+                    <p>Bringing Memorable Events to Life, Making Every Moment Special
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow Us</h3>
+                     <ul>
+                         <li><a href="https://www.facebook.com/">Facebook</a></li>
+                         <li><a href="https://www.twitter.com/">Twitter</a></li>
+                         <li><a href="https://www.instagram.com/">Instagram</a></li>
+                         <li><a href="https://www.youtube.com/">Youtube</a></li>
+                     </ul>
+
+                </div>
+            </div>
+            <hr>
+
+            <p class="copyright">&copy;2024 Aura Events. All rights reserved. </p>
+        </div>
+    </div>
+ <a href="#" class="arrow">
+        <i><img src="{% static 'images/up-arrow.png' %}" alt="Back to top" width="50px"></i>
+ </a>

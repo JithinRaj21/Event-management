@@ -1,0 +1,100 @@
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organizer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .registration-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            color: #1877f2; /* Facebook blue */
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input::placeholder {
+            color: #aaa; /* Placeholder color */
+        }
+        button[type="submit"] {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0e5a8a; /* Darker shade of blue */
+        }
+        .error-message {
+            color: #d93025; /* Facebook red */
+            margin-top: 10px;
+        }
+
+                .switch-link a {
+            color: #1877f2; /* Facebook blue */
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .switch-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Organizer Registration</h2>
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="text" name="username" placeholder="Enter your username" required><br>
+
+            <input type="email" name="email" placeholder="Enter your email" required><br>
+
+            <input type="password" name="password" placeholder="Enter your password" required><br>
+
+            <input type="password" name="confirm_password" placeholder="Confirm your password" required><br>
+            <button type="submit">Register</button>
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+        </form>
+        <p class="switch-link">Already have an account? <a href="{% url 'organizer_login' %}">Login</a></p>
+    </div>
+</body>
+</html>
+
+
+
+{% endblock %}

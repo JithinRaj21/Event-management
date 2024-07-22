@@ -1,0 +1,42 @@
+<!-- templates/payment_page.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PayPal Payment</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=Your-PayPal-Client-ID&currency=INR"></script>
+</head>
+<body>
+    <h1>Pay with PayPal</h1>
+    <div id="paypal-button-container"></div>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '{{ total_amount }}'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    fetch('/capture-order/' + data.orderID + '/', {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    }).then(function(res) {
+                        return res.json();
+                    }).then(function(orderData) {
+                        console.log('Order captured:', orderData);
+                        alert('Payment successful!');
+                        // Redirect to a success page or update your application state
+                    });
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>

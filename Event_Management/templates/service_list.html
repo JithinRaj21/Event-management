@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+
+        body {
+            text-align: center;
+        }
+
+
+        .btn-link {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s ease;
+            font-size: 13px;
+            padding: 10px 20px;
+            text-align:center;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+
+        }
+
+
+
+
+    </style>
+
+<section id="service" class="service">
+    <div class="container">
+        <div class="heading4">Our Services</div>
+    </div>
+    <div class="container" id="container-service">
+        <div class="row">
+            {% for event in non_ticketed_events %}
+            <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                    <div class="card-body">
+                        <h3 style="font-weight:light;">{{ event.title }}</h3>
+                        <br>
+                        <a href="{% url 'service_detail' event.id %}" class="btn-link">Know More➔</a>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

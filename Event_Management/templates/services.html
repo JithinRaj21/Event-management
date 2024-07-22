@@ -1,0 +1,99 @@
+{% load static %}
+
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.service{
+   margin-top:0px;
+}
+
+.heading4 {
+
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.category-item {
+    position:relative;
+    overflow: hidden;
+}
+
+.category-item img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.category-item:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.see-all-link {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.see-all-link:hover {
+    text-decoration: underline;
+
+}
+
+</style>
+<section id="service" class="service">
+    <div class="container">
+        <div class="heading4">Our Services</div>
+    </div>
+    <div class="container" id="container-service">
+        <div class="row">
+            {% for event in non_ticketed_events|slice:"0:8" %}
+            <div class="col-md-3 py-3 py-md-0">
+                <div class="category-item card">
+                    <a href="{% url 'service_detail' event.id %}">
+                        <img src="{{ event.image.url }}" alt="{{ event.title }}" class="card-img-top">
+                        <div class="overlay">
+                            <div class="text">{{ event.title }}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="see-all-link" href="{% url 'service_list' %}">See All Services</a>
+    </div>
+</section>

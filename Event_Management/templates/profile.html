@@ -1,0 +1,92 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+<style>
+
+       body {
+            background-color: #f2f9f2;
+       }
+
+    .profile-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 20px auto;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+    .profile-container h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .profile-container p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .profile-container p.email {
+        font-weight: bold;
+        color: #4CAF50;
+    }
+
+    .profile-container .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-container .avatar img {
+        width: 100%;
+        height: auto;
+    }
+
+    .profile-container .social-links {
+        margin-top: 20px;
+    }
+
+    .profile-container .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+        font-size: 20px;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+
+    .profile-container .social-links a:hover {
+        color: #3b5998; /* Change color to a relevant social media color */
+    }
+</style>
+
+<div class="profile-container">
+    <div class="avatar">
+        <img src="{% static 'images/avatar2.png' %}" alt="Profile Picture">
+    </div>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p class="email">{{ user.email }}</p>
+    <p>Phone Number: {{ user.phone_number }}</p>
+    <div class="social-links">
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+</div>
+
+{% endblock %}
+
+

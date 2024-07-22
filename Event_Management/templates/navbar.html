@@ -1,0 +1,181 @@
+ <!-- navbar -->
+ {% load static %}
+
+ <style>
+body {
+  margin: 0;
+  padding-top: 70px;
+}
+
+.navbar-nav.ml-auto .nav-link.dropdown-toggle {
+    color: #000080; /* Text color */
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-nav.ml-auto .nav-link.dropdown-toggle:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+    border-radius: 50%; /* Rounded border */
+}
+
+.navbar-nav.ml-auto .nav-link.dropdown-toggle .fas.fa-user-circle {
+    font-size: 24px;
+    color: #000080;
+    margin-right: 10px;
+}
+
+.navbar-nav.ml-auto .dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    min-width: 160px;
+    text-align: left;
+    right: 0;
+}
+
+.navbar-nav.ml-auto .dropdown-menu a {
+    display: block;
+    color: #333; /* Text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navbar-nav.ml-auto .dropdown-menu a:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+}
+
+
+.navbar-nav.ml-auto .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    left: auto;
+    right: 0;
+}
+
+
+/* Services */
+
+.navbar-nav .dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.navbar-nav .dropdown-menu a {
+  color: black;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+.navbar-nav .dropdown-menu a:hover {
+  background-color: #f7f5f2;
+}
+
+.signup-btn {
+  background-color: #ff9800;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #e68900;
+
+  transform: scale(1.05);
+}
+
+.signup-btn:focus {
+  outline: none;
+}
+
+ </style>
+
+  <nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container-fluid">
+      <a style="color:black;" class="navbar-brand" href="#" id="logo">
+          <img src="{% static 'images/new_logo.png' %}" alt="">
+
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fa-solid fa-bars" style="color: white; font-size: 23px;"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}"><i class="fas fa-home"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+                    <li class="nav-item dropdown">
+          <a class="nav-link" href="#">Services</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'service_detail' 6 %}">Weddings</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 7 %}">Birthday Party</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 8 %}">Bachelor Party</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 9 %}">Funerals</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 10 %}">Baby Shower</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 5 %}">Engagements</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 20 %}">Intimate Weddings</a>
+            <a class="dropdown-item" href="{% url 'service_detail' 11 %}">Office Party</a>
+
+          </div>
+        </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}"> Contact</a>
+          </li>
+        </ul>
+
+               <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i> <!-- Profile icon -->
+
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">My Info</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                   <li class="nav-item">
+                        <a class="nav-link signup-btn" href="{% url 'register' %}">Sign Up </a>
+                   </li>
+                {% endif %}
+            </ul>
+
+
+
+    </div>
+    </div>
+  </nav>

@@ -1,0 +1,64 @@
+{% load static %}
+
+{% block content %}
+
+
+<style>
+        body {
+            background-image: url("{% static 'images/b2.png' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background:linear-gradient(90deg, #5f2c82, #49a09d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .success-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .success-container .icon {
+            font-size: 3rem;
+            color: #28a745;
+        }
+        .success-container h1 {
+            margin-top: 1rem;
+            font-size: 2rem;
+            color: #343a40;
+        }
+        .success-container p {
+            margin: 1rem 0;
+            color: #6c757d;
+        }
+        .success-container .btn {
+            margin-top: 1rem;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+        }
+        .success-container .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <div class="success-container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Message Sent Successfully!</h1>
+        <p>Thank you for your message! Our team is on it and will reply to you shortly. We appreciate your patience and look forward to assisting you!</p>
+
+        <a href="/" class="btn btn-primary">Go Back to Home</a>
+    </div>
+
+
+{% endblock %}

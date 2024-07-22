@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+
+        body {
+            text-align: center;
+        }
+
+
+        .btn-link {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s ease;
+            font-size: 13px;
+            padding: 10px 20px;
+            text-align:center;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+
+
+
+    </style>
+
+
+<section id="events" class="events">
+    <div class="container">
+        <div class="heading4">Upcoming Events</div>
+    </div>
+    <div class="container" id="container3">
+        <div class="row">
+            {% for event in ticketed_events %}
+            <div class="col-md-3 col-sm-6 py-3 py-md-0">
+                <div class="card">
+                    <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                    <div class="card-body">
+                        <h3>{{ event.title }}</h3>
+                         <br>
+                        <a href="{% url 'event_detail' event.id %}"  class="btn-link">Know More➔</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

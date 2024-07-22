@@ -1,0 +1,166 @@
+{% load static %}
+{% block content %}
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#FFC1CC;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #fff;
+            padding: 1rem;
+             display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav img {
+            height: 40px;
+            margin-right: 3rem;
+        }
+        nav ul li {
+            margin-right: 2.2rem;
+        }
+        nav ul li a {
+            color: black;
+            margin-right: 2.2rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover{
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            color: red;
+            }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        h3 {
+            border-bottom: 2px solid #0044cc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: #0044cc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .delete-btn, .edit-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .delete-btn:hover, .edit-btn:hover {
+            background-color: #c82333;
+        }
+        .edit-btn {
+            background-color: #28a745;
+            margin-right: 0.5rem;
+        }
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <nav>
+        <img src="{% static 'images/new_logo.png' %}" alt="Logo">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'create_event' %}">Create Event</a></li>
+            <li><a href="{% url 'booking_details' %}">Service Bookings</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="section">
+            <h3>Events</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Event Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in ticketed_events %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.start_time }}</td>
+                            <td>
+                                <a href="{% url 'edit_event' event.id %}">
+                                    <button class="edit-btn">Edit</button>
+                                </a>
+                                <form action="{% url 'delete_event' event.id %}" method="post" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="section">
+            <h3>Services</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in non_ticketed_events %}
+                        <tr>
+                            <td>{{ service.title }}</td>
+
+                            <td>
+                                <form action="{% url 'delete_service' service.id %}" method="post" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
